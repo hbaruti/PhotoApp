@@ -17,7 +17,7 @@ private static int RESULT_LOAD_IMAGE = 1;
         setContentView(R.layout.activity_welcome);
     }
 
-    //Called when user taps "Add picture" -button
+    //Called when user clicks "Add picture" -button
     public void addPicture (View view){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
@@ -31,10 +31,11 @@ private static int RESULT_LOAD_IMAGE = 1;
     public void onClick (View view){
         switch (view.getId()){
             case R.id.sign_out:
-            signOut();
-            break;
+                signOut();
+                break;
             case R.id.addPictureButton:
-                addPicture();
+                //addPicture();
+                break;
         }
     }
 

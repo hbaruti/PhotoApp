@@ -17,7 +17,6 @@ import java.util.Arrays;
 public class FirebaseUIActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int RC_SIGN_IN = 9001;
-
     private FirebaseAuth mAuth;
     private TextView mStatusView;
     private TextView mDetailView;
@@ -34,7 +33,6 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
 
         mStatusView = findViewById(R.id.status);
         mDetailView = findViewById(R.id.detail);
-
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.continue_button).setOnClickListener(this);
@@ -52,10 +50,10 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
 
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
-                // Sign in succeeded
+                //Sign in successful
                 updateUI(mAuth.getCurrentUser());
             } else {
-                // Sign in failed
+                //Sign in failed
                 Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
                 updateUI(null);
             }
@@ -63,7 +61,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void startSignIn() {
-        // Build FirebaseUI sign in intent
+        //Build FirebaseUI sign in intent
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 .setIsSmartLockEnabled(!BuildConfig.DEBUG)
                 .setAvailableProviders(Arrays.asList(
@@ -76,18 +74,16 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            // Signed in
+            //Signed in
             mStatusView.setText(getString(R.string.firebaseui_status_fmt, user.getEmail()));
             mDetailView.setText(getString(R.string.id_fmt, user.getUid()));
-
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
             findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
         } else {
-            // Signed out
+            //Signed out
             mStatusView.setText(R.string.signed_out);
             mDetailView.setText(null);
-
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_button).setVisibility(View.GONE);
             findViewById(R.id.continue_button).setVisibility(View.GONE);
@@ -100,7 +96,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
         updateUI(null);
     }
 
-    //User continues to WelcomeActivity after signin in
+    //User continues to WelcomeActivity after signing in
     private void ContinueToApp() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);

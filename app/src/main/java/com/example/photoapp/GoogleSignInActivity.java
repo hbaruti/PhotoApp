@@ -28,7 +28,7 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
 
-    //declare_auth
+    //Declare auth
     private FirebaseAuth mAuth;
 
     private GoogleSignInClient mGoogleSignInClient;
@@ -55,13 +55,11 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
                 .requestEmail()
                 .build();
 
-        //Initialize default FirebaseApp
-        FirebaseApp.initializeApp(this);
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         //Initialize default FirebaseApp
         FirebaseApp.initializeApp(this);
-        //initialize auth
+        //Initialize auth
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -69,16 +67,16 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        //Result returned from launching intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In was successful, authenticate with Firebase
+                //Google sign in successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
 
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
+                //Google sign in failed, update UI
                 Log.w(TAG, "Google sign in failed", e);
                 updateUI(null);
             }
@@ -95,12 +93,12 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            //Sign in successful, update UI with user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
+                            //Sign in failed, display message to user
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             updateUI(null);
@@ -116,10 +114,10 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void signOut() {
-        // Firebase sign out
+        //Firebase sign out
         mAuth.signOut();
 
-        // Google sign out
+        //Google sign out
         mGoogleSignInClient.signOut().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
@@ -130,10 +128,10 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void revokeAccess() {
-        // Firebase sign out
+        //Firebase sign out
         mAuth.signOut();
 
-        // Google revoke access
+        //Google revoke access
         mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
                 new OnCompleteListener<Void>() {
                     @Override
@@ -148,18 +146,17 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
         if (user != null) {
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
-
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
 
+    //Determines which method is used when clicking a certain button
     @Override
     public void onClick(View v) {
         int i = v.getId();

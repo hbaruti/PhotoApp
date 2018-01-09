@@ -30,13 +30,10 @@ import com.google.firebase.auth.FirebaseUser;
 public class FacebookLoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "FacebookLogin";
-
     private TextView mStatusTextView;
     private TextView mDetailTextView;
-
     //declare auth
     private FirebaseAuth mAuth;
-
     private CallbackManager mCallbackManager;
 
     @Override
@@ -52,10 +49,10 @@ public class FacebookLoginActivity extends BaseActivity implements View.OnClickL
 
         //Initialize default FirebaseApp
         FirebaseApp.initializeApp(this);
-        //initialize Firebase auth
+        //Initialize Firebase auth
         mAuth = FirebaseAuth.getInstance();
 
-        //initialize facebook login button
+        //Initialize Facebook login button
         mCallbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = findViewById(R.id.button_facebook_login);
         loginButton.setReadPermissions("email", "public_profile");
@@ -90,7 +87,7 @@ public class FacebookLoginActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        //pass activity result back to fb SDK
+        //Pass activity result back to Facebook SDK
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -103,12 +100,12 @@ public class FacebookLoginActivity extends BaseActivity implements View.OnClickL
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //sign in success, update UI with signed-in user's information
+                    //Sign in successful, update UI with user's information
                     Log.d(TAG, "signInWithCredential:success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
                 }else{
-                    //if sign in fails, display message to user
+                    //Sign in failed, display message to user
                     Log.w(TAG, "signInWithCredential:failure", task.getException());
                     Toast.makeText(FacebookLoginActivity.this, "Authentication fialed.", Toast.LENGTH_SHORT).show();
                     updateUI(null);
@@ -118,24 +115,24 @@ public class FacebookLoginActivity extends BaseActivity implements View.OnClickL
         });
     }
 
+    //Sign out user
     public void signOut(){
         mAuth.signOut();
         LoginManager.getInstance().logOut();
         updateUI(null);
     }
 
+    //Update UI
     private void updateUI(FirebaseUser user){
         hideProgressDialog();
         if (user != null) {
             mStatusTextView.setText(getString(R.string.facebook_status_fmt, user.getDisplayName()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
             findViewById(R.id.button_facebook_login).setVisibility(View.GONE);
             findViewById(R.id.button_facebook_signout).setVisibility(View.VISIBLE);
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
-
             findViewById(R.id.button_facebook_login).setVisibility(View.VISIBLE);
             findViewById(R.id.button_facebook_signout).setVisibility(View.GONE);
         }
