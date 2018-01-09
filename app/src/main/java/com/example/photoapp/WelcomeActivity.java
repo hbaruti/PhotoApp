@@ -33,9 +33,6 @@ private static int RESULT_LOAD_IMAGE = 1;
             case R.id.sign_out:
                 signOut();
                 break;
-            case R.id.addPictureButton:
-                //addPicture();
-                break;
         }
     }
 
