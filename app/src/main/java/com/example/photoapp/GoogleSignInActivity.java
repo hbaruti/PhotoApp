@@ -55,6 +55,8 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
                 .requestEmail()
                 .build();
 
+        //Initialize default FirebaseApp
+        FirebaseApp.initializeApp(this);
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         //Initialize default FirebaseApp
@@ -74,6 +76,7 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
+
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);

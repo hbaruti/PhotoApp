@@ -37,6 +37,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.continue_button).setOnClickListener(this);
     }
 
     @Override
@@ -62,8 +63,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void startSignIn() {
-        // Build FirebaseUI sign in intent. For documentation on this operation and all
-        // possible customization see: https://github.com/firebase/firebaseui-android
+        // Build FirebaseUI sign in intent
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 .setIsSmartLockEnabled(!BuildConfig.DEBUG)
                 .setAvailableProviders(Arrays.asList(
@@ -82,6 +82,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
         } else {
             // Signed out
             mStatusView.setText(R.string.signed_out);
@@ -89,12 +90,20 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+            findViewById(R.id.continue_button).setVisibility(View.GONE);
         }
     }
 
+    //Sign out user
     private void signOut() {
         AuthUI.getInstance().signOut(this);
         updateUI(null);
+    }
+
+    //User continues to WelcomeActivity after signin in
+    private void ContinueToApp() {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -106,6 +115,8 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
             case R.id.sign_out_button:
                 signOut();
                 break;
+            case R.id.continue_button:
+                ContinueToApp();
         }
     }
 }
