@@ -132,7 +132,6 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                                             Toast.LENGTH_SHORT).show();
                                     updateUI(null);
                                 }
-
                                 if (!task.isSuccessful()) {
                                     mStatusTextView.setText(R.string.auth_failed);
                                 }
@@ -201,7 +200,11 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 findViewById(R.id.email_password_fields).setVisibility(View.GONE);
                 findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
                 findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
-                findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
+                if(user.isEmailVerified()){
+                    findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
+                }else{
+                    findViewById(R.id.continue_button).setVisibility(View.GONE);
+                }
             } else {
                 mStatusTextView.setText(R.string.signed_out);
                 mDetailTextView.setText(null);
