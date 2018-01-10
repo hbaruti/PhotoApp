@@ -97,7 +97,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
     }
 
     //User continues to WelcomeActivity after signing in
-    private void ContinueToApp() {
+    private void continueToApp() {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
@@ -112,7 +112,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
                 signOut();
                 break;
             case R.id.continue_button:
-                ContinueToApp();
+                continueToApp();
         }
     }
 }

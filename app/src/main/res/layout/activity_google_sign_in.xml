@@ -40,6 +40,17 @@
             style="@style/ThemeOverlay.MyTextDetail"
             tools:text="Firebase User ID: 123456789abc" />
 
+        <Button
+            android:id="@+id/continue_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sign_in_button"
+            android:layout_below="@+id/sign_out_button"
+            android:onClick="onClick"
+            android:text="@string/continue_button"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            android:visibility="visible" />
+
     </LinearLayout>
 
 

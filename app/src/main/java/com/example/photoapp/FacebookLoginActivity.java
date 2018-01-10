@@ -130,12 +130,21 @@ public class FacebookLoginActivity extends BaseActivity implements View.OnClickL
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
             findViewById(R.id.button_facebook_login).setVisibility(View.GONE);
             findViewById(R.id.button_facebook_signout).setVisibility(View.VISIBLE);
+            findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
             findViewById(R.id.button_facebook_login).setVisibility(View.VISIBLE);
             findViewById(R.id.button_facebook_signout).setVisibility(View.GONE);
+            findViewById(R.id.continue_button).setVisibility(View.GONE);
+
         }
+    }
+
+    private void continueToApp() {
+        Intent intent = new Intent (this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -143,6 +152,8 @@ public class FacebookLoginActivity extends BaseActivity implements View.OnClickL
         int i = v.getId();
         if (i == R.id.button_facebook_signout) {
             signOut();
+        }else if (i == R.id.continue_button){
+            continueToApp();
         }
     }
 }

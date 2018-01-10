@@ -1,5 +1,6 @@
 package com.example.photoapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -181,13 +182,20 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 findViewById(R.id.email_password_fields).setVisibility(View.GONE);
                 findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
                 findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
+                findViewById(R.id.continue_button).setVisibility(View.VISIBLE);
             } else {
                 mStatusTextView.setText(R.string.signed_out);
                 mDetailTextView.setText(null);
                 findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
                 findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
                 findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
+                findViewById(R.id.continue_button).setVisibility(View.GONE);
             }
+        }
+
+        private void continueToApp() {
+            Intent intent = new Intent(this, WelcomeActivity.class);
+            startActivity(intent);
         }
 
         @Override
@@ -201,6 +209,8 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 signOut();
             } else if (i == R.id.verify_email_button) {
                 sendEmailVerification();
+            } else if (i == R.id.continue_button){
+                continueToApp();
             }
         }
 
