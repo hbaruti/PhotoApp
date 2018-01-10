@@ -1,3 +1,19 @@
+/**
+ * Copyright 2016 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.example.photoapp;
 
 import android.content.Intent;
@@ -67,7 +83,8 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
             showProgressDialog();
 
             //Create user with email
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
@@ -89,6 +106,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
             });
         }
 
+        //User taps "Sign in" -button
         private void signIn(String email, String password) {
                 Log.d(TAG, "signIn:" + email);
                 if (!validateForm()) {
@@ -98,7 +116,8 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 showProgressDialog();
 
                 //Email - password sign in
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
@@ -109,7 +128,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                                 } else {
                                     //Sign in failed, display message to user
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+                                    Toast.makeText(EmailPasswordActivity.this, "Authentication failed",
                                             Toast.LENGTH_SHORT).show();
                                     updateUI(null);
                                 }
@@ -132,9 +151,9 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
             // Disable button
             findViewById(R.id.verify_email_button).setEnabled(false);
             // Send verification email
-            // send_email_verification
             final FirebaseUser user = mAuth.getCurrentUser();
-            user.sendEmailVerification().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            user.sendEmailVerification()
+                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 // Re-enable button
@@ -157,7 +176,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
             boolean valid = true;
             String email = mEmailField.getText().toString();
             if (TextUtils.isEmpty(email)) {
-                mEmailField.setError("Required.");
+                mEmailField.setError("Required");
                 valid = false;
             } else {
                 mEmailField.setError(null);
@@ -165,7 +184,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
             String password = mPasswordField.getText().toString();
             if (TextUtils.isEmpty(password)) {
-                mPasswordField.setError("Required.");
+                mPasswordField.setError("Required");
                 valid = false;
             } else {
                 mPasswordField.setError(null);
@@ -201,15 +220,15 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         @Override
         public void onClick(View v) {
             int i = v.getId();
-            if (i == R.id.email_create_account_button) {
+            if(i == R.id.email_create_account_button){
                 createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-            } else if (i == R.id.email_sign_in_button) {
+            }else if (i == R.id.email_sign_in_button){
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-            } else if (i == R.id.sign_out_button) {
+            }else if (i == R.id.sign_out_button){
                 signOut();
-            } else if (i == R.id.verify_email_button) {
+            }else if (i == R.id.verify_email_button){
                 sendEmailVerification();
-            } else if (i == R.id.continue_button){
+            }else if (i == R.id.continue_button){
                 continueToApp();
             }
         }
