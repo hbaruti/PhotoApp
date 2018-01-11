@@ -19,19 +19,26 @@ public class AddPictureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_picture);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("????????????????????????????????????????????????????????????????????????????????????????????????????");
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data){
             Uri selectedImage = data.getData();
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
+            System.out.println("***************************************************************************************************");
+            Intent intent = new Intent(this, ViewGalleryActivity.class);
+            startActivity(intent);
+            System.out.println("**************************Start activity");
         }
     }
 }

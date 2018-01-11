@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Exchangeagram</string>
+    <string name="app_name">Add Pictures</string>
 
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
@@ -29,20 +29,20 @@
     <string name="no_internet_connection">No Internet connection.</string>
     <string name="unknown_error">Unknown error.</string>
     <string name="unknown_sign_in_response">Unknown sign in response.</string>
-    <string name="label_google_sign_in">Firebase + Google Sign In</string>
-    <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
+    <string name="label_google_sign_in">Google Sign In</string>
+    <string name="desc_google_sign_in"></string>
 
-    <string name="label_facebook_login">Firebase + Facebook Login</string>
-    <string name="desc_facebook_login">Use a Facebook Login credential to authenticate with Firebase.</string>
+    <string name="label_facebook_login">Facebook Login</string>
+    <string name="desc_facebook_login"></string>
 
-    <string name="label_twitter_login">Firebase + Twitter Login</string>
-    <string name="desc_twitter_login">Use a Twitter Login credential to authenticate with Firebase.</string>
+    <string name="label_twitter_login">Twitter Login</string>
+    <string name="desc_twitter_login"></string>
 
     <string name="label_emailpassword">Email/Password Authentication</string>
-    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
+    <string name="desc_emailpassword"></string>
 
     <string name="label_phone_auth">Phone Number Authentication</string>
-    <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
+    <string name="desc_phone_auth"></string>
 
     <string name="label_anonymous_auth">Anonymous Authentication</string>
     <string name="desc_anonymous_auth">Sign in anonymously and then later upgrade to a full Firebase Auth user.</string>
@@ -51,7 +51,7 @@
     <string name="desc_custom_auth">Use a custom token signed by your own server to authenticate with Firebase.</string>
 
     <string name="label_firebase_ui">FirebaseUI Auth</string>
-    <string name="desc_firebase_ui">Use the FirebaseUI-Android library to authenticate with Firebase.</string>
+    <string name="desc_firebase_ui"></string>
 
     <string name="hint_user_id">User ID</string>
     <string name="get_custom_token">Get Token</string>
