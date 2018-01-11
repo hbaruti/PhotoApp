@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.facebook.login.LoginManager;
 import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class WelcomeActivity extends AppCompatActivity {
-private static int RESULT_LOAD_IMAGE = 1;
+    private static int RESULT_LOAD_IMAGE = 1;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +26,10 @@ private static int RESULT_LOAD_IMAGE = 1;
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }
 
-    //Sign out user
-    private void signOut() {
-        AuthUI.getInstance().signOut(this);
+    public void signOut(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, ChooserActivity.class);
+        startActivity(intent);
     }
 
     public void onClick (View view){

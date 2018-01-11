@@ -54,7 +54,7 @@ public class FirebaseUIActivity extends AppCompatActivity implements View.OnClic
                 updateUI(mAuth.getCurrentUser());
             } else {
                 //Sign in failed
-                Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sign In Failed. Make sure you are using your Firebase login information.", Toast.LENGTH_SHORT).show();
                 updateUI(null);
             }
         }
