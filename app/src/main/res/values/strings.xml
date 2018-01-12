@@ -15,9 +15,8 @@
     <string name="write_username">Write your username here</string>
     <string name="write_password">Write your password here</string>
     <string name="welcome_text">Welcome to this app!</string>
-    <string name="next_activity">What do you want to do next?</string>
     <string name="button_add_picture">Add picture</string>
-    <string name="button_view_picture">View picture</string>
+    <string name="button_show_pictures">Your pictures</string>
     <!-- below is code for Firebase auth -->
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_application_id" translatable="false">1908004585880325</string>

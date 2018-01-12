@@ -24,7 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public void addPicture (View view){
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
-        Intent intent2 = new Intent(this, AddPictureActivity.class);
+        Intent intent2 = new Intent(this, ViewGalleryActivity.class);
         startActivity(intent2);
     }
 
