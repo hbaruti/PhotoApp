@@ -36,6 +36,14 @@ private static final int RESULT_LOAD_IMAGE = 1;
             }
         });
 
+
+        //TODO set imgView to be visible only after choosing a picture
+        if(RESULT_LOAD_IMAGE != 1){
+            findViewById(R.id.imgView).setVisibility(View.GONE);
+        }else{
+            findViewById(R.id.imgView).setVisibility(View.VISIBLE);
+        }
+
         System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111");
 
 
@@ -56,7 +64,6 @@ private static final int RESULT_LOAD_IMAGE = 1;
         }
 
     }
-
 
     //Handling the permissions request response
     @Override
