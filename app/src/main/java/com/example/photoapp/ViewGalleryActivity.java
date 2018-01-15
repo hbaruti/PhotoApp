@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
+import android.widget.Toast;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -36,7 +37,6 @@ private static final int RESULT_LOAD_IMAGE = 1;
             }
         });
 
-
         //TODO set imgView to be visible only after choosing a picture
         if(RESULT_LOAD_IMAGE != 1){
             findViewById(R.id.imgView).setVisibility(View.GONE);
@@ -56,6 +56,8 @@ private static final int RESULT_LOAD_IMAGE = 1;
             if(ActivityCompat.shouldShowRequestPermissionRationale(ViewGalleryActivity.this,
                     android.Manifest.permission.READ_EXTERNAL_STORAGE)){
                 //Show explanation to user. After, ask user for the permissions again.
+                Toast.makeText(ViewGalleryActivity.this,
+                        "We ask this permission so that You are able to add Your pictures to this app.", Toast.LENGTH_SHORT).show();
             }else{
                 //No explanation needed, app can request permission.
                 ActivityCompat.requestPermissions(ViewGalleryActivity.this, new String[]
