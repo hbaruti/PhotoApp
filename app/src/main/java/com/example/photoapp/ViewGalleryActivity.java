@@ -16,6 +16,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class ViewGalleryActivity extends AppCompatActivity {
@@ -98,6 +100,9 @@ private static final int RESULT_LOAD_IMAGE = 1;
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             findViewById(R.id.imgView).setVisibility(View.VISIBLE);
             System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444");
+            ArrayList<Uri> usersPictures = new ArrayList<>();
+            usersPictures.add(selectedImage);
+            System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555" + usersPictures);
         }
     }
 
