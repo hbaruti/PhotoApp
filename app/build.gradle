@@ -29,11 +29,11 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    //required for firebase
+    //Required for firebase
     implementation 'com.firebaseui:firebase-ui-auth:3.1.2'
-    //required if fb login support is required
+    //Required if fb login support is required
     implementation 'com.facebook.android:facebook-login:4.29.0'
-    //required if twitter login support is required
+    //Required if twitter login support is required
     //implementation("com.twitter.sdk.android:twitter-core:3.x@aar") {transitive = true }
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -44,9 +44,11 @@ dependencies {
     compile 'com.firebaseui:firebase-ui-auth:3.1.2'
     // Required only if Facebook login support is required
     compile('com.facebook.android:facebook-android-sdk:4.27.0')
-    // Required only if Twitter login support is required
+    //Required only if Twitter login support is required
     //compile("com.twitter.sdk.android:twitter-core:3.0.0@aar") { transitive = true }
     //Required for asking permissions in this app
     compile 'com.android.support:support-v4:26.1.0'
     compile 'com.android.support:appcompat-v7:26.1.0'
+    //Bottom nav
+    compile 'com.aurelhubert:ahbottomnavigation:2.0.4'
 }

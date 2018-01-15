@@ -1,11 +1,13 @@
 package com.example.photoapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.facebook.login.LoginManager;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;

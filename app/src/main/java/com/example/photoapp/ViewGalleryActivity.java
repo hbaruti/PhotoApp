@@ -37,15 +37,10 @@ private static final int RESULT_LOAD_IMAGE = 1;
             }
         });
 
-        //TODO set imgView to be visible only after choosing a picture
-        if(RESULT_LOAD_IMAGE != 1){
-            findViewById(R.id.imgView).setVisibility(View.GONE);
-        }else{
-            findViewById(R.id.imgView).setVisibility(View.VISIBLE);
-        }
+        findViewById(R.id.imgView).setVisibility(View.GONE);
+
 
         System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111");
-
 
         //Requesting permissions at runtime (Beginning in Android6.0 (API level 23)
         //Users grant permissions while the app is running instead of when they install the app
@@ -89,7 +84,6 @@ private static final int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444");
 
         if(requestCode==RESULT_LOAD_IMAGE && resultCode==RESULT_OK && null != data) {
            Uri selectedImage = data.getData();
@@ -102,9 +96,9 @@ private static final int RESULT_LOAD_IMAGE = 1;
 
             ImageView imageView = (ImageView)findViewById(R.id.imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-       }
+            findViewById(R.id.imgView).setVisibility(View.VISIBLE);
+            System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444");
+        }
     }
 
 }
