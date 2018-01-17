@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Add Pictures</string>
 
-    <!-- Strings related to login -->
+    <!-- Basic login strings -->
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -10,48 +10,77 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."</string>
-    <string name="write_username">Write your username here</string>
-    <string name="write_password">Write your password here</string>
-    <string name="welcome_text">Welcome to this app!</string>
-    <string name="button_add_picture">Add picture</string>
-    <string name="button_show_pictures">Your pictures</string>
-    <!-- below is code for Firebase auth -->
-    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-    <string name="facebook_application_id" translatable="false">1908004585880325</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb1908004585880325</string>
-    <!-- Twitter consumer key and secret
-    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
-    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>  -->
     <string name="signed_in_cancelled">Sign in cancelled.</string>
     <string name="no_internet_connection">No Internet connection.</string>
     <string name="unknown_error">Unknown error.</string>
     <string name="unknown_sign_in_response">Unknown sign in response.</string>
+    <string name="write_username">Write your username here</string>
+    <string name="write_password">Write your password here</string>
+
+    <!-- WelcomeActivity related strings -->
+    <string name="welcome_text">Welcome to this app!</string>
+    <string name="button_add_picture">Add picture</string>
+    <string name="button_show_pictures">Your pictures</string>
+
+    <!-- Firebase auth -->
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">1908004585880325</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1908004585880325</string>
+
+    <!-- Twitter consumer key and secret
+    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
+    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>  -->
+
+    <!-- Google Sign In -->
     <string name="label_google_sign_in">Google Sign In</string>
     <string name="desc_google_sign_in"></string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="google_title_text">Google Sign In</string>
 
+    <!-- Facebook login -->
     <string name="label_facebook_login">Facebook Login</string>
     <string name="desc_facebook_login"></string>
+    <string name="facebook_status_fmt">Facebook User: %s</string>
+    <string name="facebook_title_text">Facebook Login</string>
 
+    <!-- Twitter login
     <string name="label_twitter_login">Twitter Login</string>
     <string name="desc_twitter_login"></string>
+    <string name="twitter_status_fmt">Twitter User: %s</string>
+    <string name="twitter_title_text">Twitter Login</string> -->
 
+    <!-- Email-Password login -->
     <string name="label_emailpassword">Email/Password Authentication</string>
     <string name="desc_emailpassword"></string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Email and Password</string>
 
-    <string name="label_phone_auth">Phone Number Authentication</string>
-    <string name="desc_phone_auth"></string>
-
-    <string name="label_anonymous_auth">Anonymous Authentication</string>
-    <string name="desc_anonymous_auth">Sign in anonymously and then later upgrade to a full Firebase Auth user.</string>
-
-    <string name="label_custom_auth">Custom Authentication</string>
-    <string name="desc_custom_auth">Use a custom token signed by your own server to authenticate with Firebase.</string>
-
+    <!-- Firebase authentication -->
     <string name="label_firebase_ui">FirebaseUI Auth</string>
     <string name="desc_firebase_ui"></string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="firebaseui_status_fmt">Firebase User: %s</string>
+    <string name="firebaseui_title_text">FirebaseUI Auth</string>
 
+    <!-- Phone authentication
+    <string name="label_phone_auth">Phone Number Authentication</string>
+    <string name="desc_phone_auth"></string>
+    <string name="phone_title_text">Phone Number</string> -->
+
+    <!-- Anonymous authentication
+    <string name="label_anonymous_auth">Anonymous Authentication</string>
+    <string name="desc_anonymous_auth">Sign in anonymously and then later upgrade to a
+    full Firebase Auth user.</string> -->
+
+    <!-- Custom authentication
+    <string name="label_custom_auth">Custom Authentication</string>
+    <string name="desc_custom_auth">Use a custom token signed by your own server
+    to authenticate with Firebase.</string>
+    <string name="id_fmt">User ID: %s</string>
+    <string name="email_fmt">Email: %s</string> -->
+
+    <!-- Firebase authentication related strings -->
     <string name="hint_user_id">User ID</string>
     <string name="get_custom_token">Get Token</string>
     <string name="sign_in">Sign In</string>
@@ -67,7 +96,6 @@
     <string name="token_null">Token: null</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="desc_firebase_lockup">Firebase logo and name</string>
     <string name="auth_failed">Authentication failed. Note that only gmail accounts are acceptable.</string>
     <string name="start_phone_auth">Start</string>
     <string name="verify_phone_auth">Verify</string>
@@ -79,27 +107,7 @@
     <string name="status_verification_succeeded">Verification succeeded</string>
     <string name="status_sign_in_failed">Sign-in failed</string>
     <string name="instant_validation">(instant validation)</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."</string>
 
-    <string name="firebase_status_fmt">Firebase User: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
-
-    <string name="google_status_fmt">Google User: %s</string>
-    <string name="google_title_text">Google Sign In</string>
-
-    <string name="facebook_status_fmt">Facebook User: %s</string>
-    <string name="facebook_title_text">Facebook Login</string>
-
-    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="emailpassword_title_text">Email and Password</string>
-
-    <string name="phone_title_text">Phone Number</string>
-
-    <string name="twitter_status_fmt">Twitter User: %s</string>
-    <string name="twitter_title_text">Twitter Login</string>
-
-    <string name="firebaseui_status_fmt">Firebase User: %s</string>
-    <string name="firebaseui_title_text">FirebaseUI Auth</string>
-
-    <string name="id_fmt">User ID: %s</string>
-    <string name="email_fmt">Email: %s</string>
 </resources>
