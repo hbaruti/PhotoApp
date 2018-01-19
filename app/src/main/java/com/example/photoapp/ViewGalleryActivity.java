@@ -41,14 +41,10 @@ private static final int RESULT_LOAD_IMAGE = 1;
 
         findViewById(R.id.imgView).setVisibility(View.GONE);
 
-
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111111111111111");
-
         //Requesting permissions at runtime (Beginning in Android6.0 (API level 23)
         //Users grant permissions while the app is running instead of when they install the app
         int permissionCheck = ContextCompat.checkSelfPermission(ViewGalleryActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE);
         if(permissionCheck != PERMISSION_GRANTED){
-            System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222");
             //Should the app show and explanation to why it is asking for permissions
             if(ActivityCompat.shouldShowRequestPermissionRationale(ViewGalleryActivity.this,
                     android.Manifest.permission.READ_EXTERNAL_STORAGE)){
@@ -67,7 +63,6 @@ private static final int RESULT_LOAD_IMAGE = 1;
     //Handling the permissions request response
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int [] grantResults){
-        System.out.println("33333333333333333333333333333333333333333333333333333333333333333333333333333333");
         switch(requestCode){
             case RESULT_LOAD_IMAGE: {
                 //If request is cancelled, the result arrays are empty
@@ -99,10 +94,8 @@ private static final int RESULT_LOAD_IMAGE = 1;
             ImageView imageView = (ImageView)findViewById(R.id.imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             findViewById(R.id.imgView).setVisibility(View.VISIBLE);
-            System.out.println("4444444444444444444444444444444444444444444444444444444444444444444444444444444444");
             ArrayList<Uri> usersPictures = new ArrayList<>();
             usersPictures.add(selectedImage);
-            System.out.println("5555555555555555555555555555555555555555555555555555555555555555555555555555555555" + usersPictures);
         }
     }
 

@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.firebase.FirebaseApp;
 
 public class ChooserActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
