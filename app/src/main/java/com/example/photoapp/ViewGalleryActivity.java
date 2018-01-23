@@ -23,6 +23,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class ViewGalleryActivity extends AppCompatActivity {
 
 private static final int RESULT_LOAD_IMAGE = 1;
+ArrayList<Uri> usersPictures = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,13 @@ private static final int RESULT_LOAD_IMAGE = 1;
         });
 
         findViewById(R.id.imgView).setVisibility(View.GONE);
+
+        if(usersPictures.isEmpty()){
+            System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111" + usersPictures);
+            findViewById(R.id.imgView).setVisibility(View.GONE);
+        }else{
+            findViewById(R.id.imgView).setVisibility(View.VISIBLE);
+        }
 
         //Requesting permissions at runtime (Beginning in Android6.0 (API level 23)
         //Users grant permissions while the app is running instead of when they install the app
@@ -94,9 +102,10 @@ private static final int RESULT_LOAD_IMAGE = 1;
             ImageView imageView = (ImageView)findViewById(R.id.imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             findViewById(R.id.imgView).setVisibility(View.VISIBLE);
-            ArrayList<Uri> usersPictures = new ArrayList<>();
             usersPictures.add(selectedImage);
         }
     }
+
+
 
 }
