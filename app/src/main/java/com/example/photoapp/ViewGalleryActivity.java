@@ -1,6 +1,5 @@
 package com.example.photoapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -8,13 +7,14 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class ViewGalleryActivity extends AppCompatActivity {
 
 private static final int RESULT_LOAD_IMAGE = 1;
-ArrayList<Uri> usersPictures = new ArrayList<>();
+ArrayList<Uri> usersPicturePaths = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,8 @@ ArrayList<Uri> usersPictures = new ArrayList<>();
 
         findViewById(R.id.imgView).setVisibility(View.GONE);
 
-        if(usersPictures.isEmpty()){
-            System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111" + usersPictures);
+        if(usersPicturePaths.isEmpty()){
+            System.out.println("111111111111111111111111111111111111111111111111111111111111111111111111" + usersPicturePaths);
             findViewById(R.id.imgView).setVisibility(View.GONE);
         }else{
             findViewById(R.id.imgView).setVisibility(View.VISIBLE);
@@ -102,10 +102,23 @@ ArrayList<Uri> usersPictures = new ArrayList<>();
             ImageView imageView = (ImageView)findViewById(R.id.imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             findViewById(R.id.imgView).setVisibility(View.VISIBLE);
-            usersPictures.add(selectedImage);
+            usersPicturePaths.add(selectedImage);
+            System.out.println("-----------------------------------------------------" + usersPicturePaths);
         }
     }
 
+    public void signOut(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, ChooserActivity.class);
+        startActivity(intent);
+    }
 
+    public void onClick (View view){
+        switch (view.getId()){
+            case R.id.sign_out:
+                signOut();
+                break;
+        }
+    }
 
 }
