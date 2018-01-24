@@ -36,6 +36,7 @@
     <string name="desc_google_sign_in">Sign in with your Google account.</string>
     <string name="google_status_fmt">Google User: %s</string>
     <string name="google_title_text">Google Sign In</string>
+    <string name="default_web_client_id2">1045125686302-nf7449kct97q2b0eahgrql31ro89ltjv.apps.googleusercontent.com</string>
 
     <!-- Facebook login -->
     <string name="label_facebook_login">Facebook Login</string>

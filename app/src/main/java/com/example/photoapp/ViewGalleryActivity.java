@@ -115,7 +115,7 @@ ArrayList<Uri> usersPicturePaths = new ArrayList<>();
 
     public void onClick (View view){
         switch (view.getId()){
-            case R.id.sign_out:
+            case R.id.button2:
                 signOut();
                 break;
         }

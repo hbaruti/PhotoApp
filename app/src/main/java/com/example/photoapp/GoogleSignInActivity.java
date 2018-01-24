@@ -42,10 +42,7 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
 
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
-
-    //Declare auth
     private FirebaseAuth mAuth;
-
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
     private TextView mDetailTextView;
@@ -59,14 +56,14 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
         mStatusTextView = findViewById(R.id.status);
         mDetailTextView = findViewById(R.id.detail);
 
-        //Button listeners
+        //Buttons
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
 
         //Configure Google sign in
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id2))
                 .requestEmail()
                 .build();
 
@@ -86,25 +83,6 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
         // Check if user is signed in (not null), update UI
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        //Result returned from launching intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                //Google sign in successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                //Google sign in failed, update UI
-                Log.w(TAG, "Google sign in failed", e);
-                updateUI(null);
-            }
-        }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
@@ -130,6 +108,31 @@ public class GoogleSignInActivity extends BaseActivity implements View.OnClickLi
                         hideProgressDialog();
                     }
                 });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //Result returned from launching intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
+            try {
+                //Google sign in successful, authenticate with Firebase
+                GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+                FirebaseUser user = mAuth.getCurrentUser();
+                updateUI(user);
+            } catch (ApiException e) {
+                //Google sign in failed, update UI
+                Log.w(TAG, "Google sign in failed", e);
+                updateUI(null);
+            }
     }
 
     private void signIn() {

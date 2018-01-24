@@ -37,11 +37,11 @@ import com.google.firebase.auth.FirebaseUser;
 public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
 
         private static final String TAG = "EmailPassword";
-        private TextView mStatusTextView;
-        private TextView mDetailTextView;
         private EditText mEmailField;
         private EditText mPasswordField;
         private FirebaseAuth mAuth;
+        private TextView mStatusTextView;
+        private TextView mDetailTextView;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
